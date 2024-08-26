@@ -46,6 +46,8 @@ int lp_variable_db_print(const lp_variable_db_t* var_db, FILE* out);
 /** Get the name of the variable */
 const char* lp_variable_db_get_name(const lp_variable_db_t* var_db, lp_variable_t var);
 
+int lp_variable_db_contains_name(const lp_variable_db_t* var_db, const char* name);
+
 #ifdef __cplusplus
 } /* close extern "C" { */
 #endif

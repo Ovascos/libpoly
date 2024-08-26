@@ -44,7 +44,7 @@ void lp_variable_db_resize(lp_variable_db_t* var_db, size_t capacity) {
   var_db->capacity = capacity;
   size_t i;
   for (i = var_db->size; i < capacity; ++ i) {
-    var_db->variable_names[i] = 0;
+    var_db->variable_names[i] = NULL;
   }
 }
 
@@ -126,4 +126,15 @@ const char* lp_variable_db_get_name(const lp_variable_db_t* var_db, lp_variable_
   assert(var_db);
   assert(var < var_db->size);
   return var_db->variable_names[var];
+}
+
+int lp_variable_db_contains_name(const lp_variable_db_t* var_db, const char* name) {
+  for (uint32_t i = 0; i < var_db->size; ++i) {
+    if (var_db->variable_names[i]) {
+      if (strcmp(var_db->variable_names[i], name) == 0) {
+        return 1;
+      }
+    }
+  }
+  return 0;
 }
