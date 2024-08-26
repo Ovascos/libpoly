@@ -37,8 +37,8 @@ void lp_polynomial_context_construct(lp_polynomial_context_t* ctx, lp_int_ring_t
   ctx->var_tmp_size = 0;
   size_t i;
   for (i = 0; i < TEMP_VARIABLE_SIZE; ++ i) {
-    char name[10];
-    sprintf(name, "#%zu", i);
+    char name[15];
+    sprintf(name, "#temp%zu", i);
     ctx->var_tmp[i] = lp_variable_db_new_variable(var_db, name);
   }
 }
